@@ -1,0 +1,47 @@
+﻿@using Лабораторная_работа___5.Models;
+@model List<DatabaseModel>
+
+<h2>Список базы данных</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Имя</th>
+            <th>Дата создания</th>
+            <th>Описание</th>
+            <th>Количество записей</th>
+            <th>Размер в байтах</th>
+            <th>Автор</th>
+            <th></th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var database in Model)
+        {
+            <tr>
+                <td>@database.Id</td>
+                <td>@database.Name</td>
+                <td>@database.CreationDate.ToShortDateString()</td>
+                <td>@database.Description</td>
+                <td>@database.RecordsCount</td>
+                <td>@database.SizeInBytes</td>
+                <td>@database.Author</td>
+                <td>@Html.ActionLink("Редактировать", "Edit", new { id = database.Id })</td>
+                <td>@Html.ActionLink("Удалить", "Delete", new { id = database.Id })</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p>@Html.ActionLink("Создать новую базу данных", "Create")</p>
+
+@if ((bool)ViewData["HelperMethod"])
+{
+    <p>Используется внешний метод</p>
+}
+else
+{
+    <p>Используется внутренний метод</p>
+}

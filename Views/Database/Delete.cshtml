@@ -1,0 +1,54 @@
+﻿@using Лабораторная_работа___5.Models;
+@model DatabaseModel
+
+<h2>Удаление базы данных</h2>
+
+<h3>Вы уверены, что хотите удалить эту базу данных?</h3>
+
+<div>
+    <h4>@Model.Name</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.RecordsCount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.RecordsCount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SizeInBytes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SizeInBytes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Author)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Author)
+        </dd>
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-group">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Вернуться к списку", "Index")
+        </div>
+    }
+</div>
